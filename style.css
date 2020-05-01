@@ -1,0 +1,100 @@
+body {
+    background-color: rgb(154, 59, 209);
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.main-body {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 550px;
+    height: 450px;
+    border-radius: 15px;
+}
+table {
+    border: 1px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-collapse: collapse;
+    
+}
+
+.td {
+    width: 60px;
+    height: 60px;
+    border: 1px solid grey;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: 36px;
+    margin: 50px auto; 
+}
+
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 50px;
+    background: lightgrey;
+    color: white;
+    font-family: 'Luckiest Guy', cursive ;
+    font-size: 34px;
+    border-radius: 16px;
+    border: none;
+}
+
+.modal-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(154, 59, 209, 0.5);
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.modal {
+    text-align: center;
+    padding-top: 30%;
+    font-size: 36px;
+    width: 320px;
+    height: 200px;
+    box-shadow: 4px ;
+    padding: 10px;
+    background: #fff;
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    transition: opacity .25s ease-out .2s;
+    border-radius: 15px;
+
+}

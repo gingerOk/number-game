@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="main-body">
+        <p class="p">Начиная с "1" нажимайте на числа до тех пор, пока не дойдете до последнего</p>
+        <button class="btn">Start</button>
+        <table>
+
+    </table>
+    </div>
+    <script>
+        var td = document.querySelectorAll('.td');
+        var tbl = document.querySelector('table');
+        var btn = document.querySelector('.btn');
+        var p = document.querySelector('.p');
+        var rows = 5;
+        var columns = 5;
+        var t = 5;
+        var clicked = 1;
+        var myVal;
+        var result;
+        var numVal = columns*rows;
+        console.log(numVal)
+        tbl.style.display = 'none';
+
+        btn.addEventListener('click', startGame);
+        btn.addEventListener('click', myTimer);
+        tbl.addEventListener('click', checkClickedNum);
+
+        function startGame() {
+            tbl.style.display = 'table';
+            btn.style.display = 'none';
+            var numbers = getNumbers();
+            for(i = 0; i < rows; i++) {
+                var tr = document.createElement('tr');
+                    for(var j = 0; j < columns; j++) {
+
+                        var td = document.createElement('td');
+                        td.classList.add('td');
+                        td.style = getRandomStyle();
+                        td.innerHTML = randomNumber();
+                        tr.appendChild(td);
+                    }
+                tbl.appendChild(tr);
+            }
+
+            function randomNumber() {
+                var n = randomInterval(0, numbers.length - 1);
+                var res = numbers[n];
+                numbers.splice(n, 1);
+                return res;
+            }
+
+                function randomInterval(min, max) {
+                return Math.round(Math.random() * (max - min) + min);
+            } 
+       
+    
+            function pickNumbers() {
+                var random = Math.floor(Math.random() * numbers.length);
+                return numbers[random];
+            }
+
+            function getNumbers() {
+                var numbs = [];
+                for(var j=0; j <= numVal; j++) {
+                    numbs[j] = j + 1;
+                }
+                return numbs;
+            }
+        
+            function getRandomStyle() {
+                return 'font-size: ' + randomInterval(12, 34) + 'px;' + 
+                        'color: ' + getRandomColor();
+            }
+
+            function getRandomColor(){
+                    return "rgb(" + randomInterval(0, 255) + ", " 
+                            + randomInterval(0, 255) + ", " + randomInterval(0, 255) + ")";
+            }
+            
+        }
+        
+        function myTimer() {
+            p.innerHTML = 'Time left: ' + t;
+            t--
+            p.style.margin = '15px auto'
+            if(t > 0) {
+            myVal = window.setTimeout(myTimer, 1000);
+            } else if(t == 0) {
+                p.innerHTML = t;
+                result = "You lost"
+                resultOfGame(result)
+                
+            }
+        }
+        
+        function checkClickedNum(event) {
+                if(event.target.innerHTML == clicked) {
+                    clicked++;
+                    event.target.style.background = 'grey';
+                    event.target.style.color = 'white';
+                }
+                if(clicked == 26) {
+                   result = 'You won';
+                    window.clearTimeout(myVal);
+                    resultOfGame(result);
+                }
+        }
+
+            function resultOfGame(result) {
+                var modWrap = document.createElement('div');
+                modWrap.classList.add('modal-wrap');
+                var modal = document.createElement('div')
+                modal.classList.add('modal');
+                var modalText = document.createElement('h1');
+                modalText.innerHTML = result;
+                var restartBtn = document.createElement('button');
+                restartBtn.innerHTML = "Restart";
+                restartBtn.classList.add('restart');
+                restartBtn.addEventListener('click', restart);
+               restartBtn.addEventListener('click', myTimer);
+                modal.appendChild(modalText);
+                modal.appendChild(restartBtn);
+                modWrap.appendChild(modal);
+                document.body.appendChild(modWrap);
+
+                function restart() {
+                    modWrap.remove();
+                    while(tbl.hasChildNodes()) {
+                        tbl.removeChild(tbl.firstChild);
+                    }
+                    t = 5;
+                    startGame()
+                }
+            }
+       
+        
+
+        // for(var i=0; i< td.length; i++) {
+        //     td[i].innerHTML = randomNumber();
+        //     td[i].style.cssText += getRandomStyle();
+        // }
+
+        
+
+    </script>
+</body>
+</html>
