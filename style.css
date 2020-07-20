@@ -7,38 +7,42 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
+    width: 700px;
+    border-radius: 15px;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 550px;
-    height: 450px;
-    border-radius: 15px;
+    padding: 30px;
+    
 }
+
 table {
     border: 1px solid grey;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
     border-collapse: collapse;
+    grid-column: 1/3;
     
 }
 
 .td {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
     border: 1px solid grey;
     text-align: center;
 }
 
+
 p {
     text-align: center;
     font-size: 36px;
-    margin: 50px auto; 
+    margin: 50px;
+    grid-column: 1/3;
 }
 
 button {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
     width: 200px;
     height: 50px;
     background: lightgrey;
@@ -47,6 +51,14 @@ button {
     font-size: 34px;
     border-radius: 16px;
     border: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    background-color: blueviolet;
 }
 
 .modal-wrap {
@@ -96,5 +108,14 @@ button {
     box-shadow: 0 5px 15px rgba(0,0,0,.5);
     transition: opacity .25s ease-out .2s;
     border-radius: 15px;
-
+    animation-name: example;
+    animation-duration: 1s;
 }
+
+
+
+.main-menu, .game-block {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
